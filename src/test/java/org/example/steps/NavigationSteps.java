@@ -47,4 +47,13 @@ public class NavigationSteps {
         productsCatalogPage.productListIsDisplayed(By.xpath("//div[contains (@data-qa, 'LST_ProductCard')][position()<=6]"));
     }
 
+    @When("Przejdz na strone glowna TMobile")
+    public void przejdzNaStroneGlowna() {
+        navigation.navigateToHomePageByClickOnLogo();
+    }
+
+    @When("Kliknij Koszyk")
+    public void przejdDoKoszyka() {
+        navigation.navigateToCart();
+    }
 }
