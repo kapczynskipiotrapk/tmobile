@@ -11,19 +11,16 @@ public class WebDriverProvider {
     public WebDriver getDriver() {
 
         if (driver == null) {
-            ChromeOptions options = new ChromeOptions();
-
-
-            driver = new ChromeDriver(options);
-            setProperties();
-
+            driver = setChromeDriver();
         }
 
         return driver;
-
     }
 
-    public void setProperties() {
+    public WebDriver setChromeDriver() {
+        ChromeOptions options = new ChromeOptions();
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
+        return driver;
     }
 }

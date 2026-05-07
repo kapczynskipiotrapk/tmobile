@@ -1,4 +1,4 @@
-package org.example.pom.modules;
+package org.example.pom;
 
 import org.example.BasePage;
 import org.openqa.selenium.By;

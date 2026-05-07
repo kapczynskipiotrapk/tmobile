@@ -9,6 +9,7 @@ public class Navigation extends BasePage {
 
     UiHelpers uiHelpers;
     private final String navigationXpath = "//a[contains(@class, 'ODSGlobalHeaderMainLink') and contains(text(), '%s')]";
+
     public Navigation(WebDriver driver) {
         super(driver);
         uiHelpers = new UiHelpers(driver);
