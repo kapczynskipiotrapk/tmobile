@@ -7,44 +7,36 @@ import org.example.config.WebDriverProvider;
 import org.example.globalhelper.cookiemanager.CookieManager;
 import org.example.globalhelper.cookiemanager.Cookies;
 import org.example.globalhelper.uiinteract.UiHelpers;
+import org.example.pom.modules.HomePage;
 import org.example.pom.modules.Navigation;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 
-public class TmobileSteps {
+public class HomePageSteps {
 
     WebDriver driver;
     Navigation navigation;
     UiHelpers uiHelpers;
+    HomePage homePage;
 
-    public TmobileSteps(WebDriverProvider webDriverProvider) {
+    public HomePageSteps(WebDriverProvider webDriverProvider) {
         this.driver = webDriverProvider.getDriver();
         this.uiHelpers = new UiHelpers(driver);
         this.navigation = new Navigation(driver);
+        this.homePage = new HomePage(driver);
     }
 
-    @When("Uzytkownik jest na stronie tmobile")
+    @When("Uzytkownik wchodzi na strone tmobile")
     public void tmobileJestOtwarty() {
         driver.get("https://www.t-mobile.pl/");
         new CustomWait(driver).waitForAjax();
-//        new CookieManager(driver).handleCookies(Cookies.AKCEPTUJE_WSZYSTKIE);
-//        new CustomWait(driver).waitForAjax();
-
+        new CookieManager(driver).handleCookies(Cookies.AKCEPTUJE_WSZYSTKIE);
     }
 
-    @When("Rozwin liste {string}")
-    public void rozwinListe(String page) {
-        navigation.openDropdownOnHover(page);
-    }
-
-
-    @Then("Lista jest widoczna")
-    public void listaJestWidoczna() {
-
-        boolean isListDisplayed = uiHelpers.isElementDisplayed(By.xpath("//a[text()='Sklep']/ancestor::div[@class=\"navInner\"]/following-sibling::nav//a[text()=\"Smartfony\"]"));
-        Assert.assertTrue(isListDisplayed);
+    @Then("Strona glowa jest widoczna")
+    public void mainPageIsDisplayed() {
+        Assert.assertTrue("strona glowna nie zaladowala sie poprawnie", homePage.homePageIsDisplayed());
     }
 
 }
