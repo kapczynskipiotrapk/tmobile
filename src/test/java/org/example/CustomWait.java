@@ -13,14 +13,19 @@ public class CustomWait {
 
     WebDriver driver;
     WebDriverWait wait;
-    public CustomWait(WebDriver driver){
+
+    public CustomWait(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     }
 
-    public WebElement waitForElementToBeLocated(By xpath){
+    public WebElement waitForElementToBeLocated(By xpath) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(xpath));
+    }
+
+    public void waitForElementsToBeLocated(By xpath) {
+         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpath));
     }
 
     public void waitForAjax() {

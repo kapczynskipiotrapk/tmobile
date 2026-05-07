@@ -7,7 +7,7 @@ import org.example.config.WebDriverProvider;
 import org.example.globalhelper.cookiemanager.CookieManager;
 import org.example.globalhelper.cookiemanager.Cookies;
 import org.example.globalhelper.uiinteract.UiHelpers;
-import org.example.pom.modules.HomePage;
+import org.example.pom.HomePage;
 import org.example.pom.modules.Navigation;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
