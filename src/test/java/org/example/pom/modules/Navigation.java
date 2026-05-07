@@ -14,14 +14,14 @@ public class Navigation extends BasePage {
         uiHelpers = new UiHelpers(driver);
     }
 
-    public void navigate(String page, String subpage){
-        openDropdownOnHover(page);
-        By secondNavigationElement = By.xpath(String.format("//a[contains(@class, 'ODSGlobalHeaderMegaMenu-ListItem') and contains(text(), '%s')]", subpage));
-        clicks.waitAndClick(secondNavigationElement);
-    }
 
     public void openDropdownOnHover(String page){
         By firstNavigationElement = By.xpath(String.format(navigationXpath, page));
         uiHelpers.hover(firstNavigationElement);
+    }
+
+    public void selectFromDropdown(String element, String section) {
+        By listElementXpath = By.xpath(String.format("//span[contains (text(), '%s')]/ancestor::ul//a[contains (text(), '%s')]", section, element));
+        clicks.waitAndClick(listElementXpath);
     }
 }
