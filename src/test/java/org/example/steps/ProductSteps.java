@@ -1,8 +1,10 @@
 package org.example.steps;
 
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.config.WebDriverProvider;
 import org.example.pom.ProductPage;
+import org.junit.Assert;
 
 public class ProductSteps {
 
@@ -17,4 +19,8 @@ public class ProductSteps {
         productPage.addProductToCart();
     }
 
+    @Then("Widoczna strona produktu")
+    public void widocznaStronaProduktu() {
+        Assert.assertTrue("Product page is not displayed", productPage.isProductPageDisplayed());
+    }
 }

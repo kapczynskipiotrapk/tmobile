@@ -9,6 +9,8 @@ public class Navigation extends BasePage {
 
     UiHelpers uiHelpers;
     private final String navigationXpath = "//a[contains(@class, 'ODSGlobalHeaderMainLink') and contains(text(), '%s')]";
+    private final By logoXpath = By.xpath("//div[contains (@class, 'logo-panel')]");
+    private final By cartXpath = By.xpath("//button[@aria-label='Koszyk']");
 
     public Navigation(WebDriver driver) {
         super(driver);
@@ -16,7 +18,7 @@ public class Navigation extends BasePage {
     }
 
 
-    public void openDropdownOnHover(String page){
+    public void openDropdownOnHover(String page) {
         By firstNavigationElement = By.xpath(String.format(navigationXpath, page));
         uiHelpers.hover(firstNavigationElement);
     }
@@ -24,5 +26,13 @@ public class Navigation extends BasePage {
     public void selectFromDropdown(String element, String section) {
         By listElementXpath = By.xpath(String.format("//span[contains (text(), '%s')]/ancestor::ul//a[contains (text(), '%s')]", section, element));
         clicks.waitAndClick(listElementXpath);
+    }
+
+    public void navigateToHomePageByClickOnLogo() {
+        clicks.waitAndClick(logoXpath);
+    }
+
+    public void navigateToCart() {
+        clicks.waitAndClick(cartXpath);
     }
 }
