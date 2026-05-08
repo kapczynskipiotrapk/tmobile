@@ -1,7 +1,7 @@
 package org.example.pom;
 
-import org.example.BasePage;
-import org.example.testdata.pojo.ProductPageTestData;
+import org.example.config.BasePage;
+import org.example.testdata.ProductPageTestData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

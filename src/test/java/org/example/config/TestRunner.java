@@ -1,4 +1,4 @@
-package org.example;
+package org.example.config;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -9,9 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "org.example.steps",
         plugin = {
-                "pretty",
                 "html:target/cucumber-report.html",
-                "json:target/cucumber.json"
         },
         monochrome = true
 )
