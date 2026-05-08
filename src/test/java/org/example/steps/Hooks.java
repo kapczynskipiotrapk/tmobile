@@ -18,7 +18,6 @@ public class Hooks {
     public void afterTest(Scenario scenario){
         if(scenario.isFailed()){
             driver.quit();
-            System.out.println(scenario.isFailed() + "dupa" + scenario.getName());
         }
     }
 
