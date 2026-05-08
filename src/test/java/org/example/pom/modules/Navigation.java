@@ -1,6 +1,6 @@
 package org.example.pom.modules;
 
-import org.example.BasePage;
+import org.example.config.BasePage;
 import org.example.globalhelper.uiinteract.UiHelpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

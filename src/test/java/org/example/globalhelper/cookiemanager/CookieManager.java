@@ -1,7 +1,7 @@
 package org.example.globalhelper.cookiemanager;
 
 
-import org.example.BasePage;
+import org.example.config.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
