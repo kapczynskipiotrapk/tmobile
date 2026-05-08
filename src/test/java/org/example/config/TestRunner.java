@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "org.example.steps",
         plugin = {
+                "json:target/cucumber.json",
                 "html:target/cucumber-report.html",
         },
         monochrome = true
