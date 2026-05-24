@@ -20,7 +20,6 @@ public class HomePage extends BasePage {
         boolean logoHasCorrectTitle = logo.getAttribute("title").equals("T-Mobile Logo");
         boolean isLogoDisplayed = logo.isDisplayed();
         boolean mainNavIsDisplayed = driver.findElement(mainNavXpath).isDisplayed();
-        System.out.println();
         return logoHasCorrectTitle && isLogoDisplayed && mainNavIsDisplayed;
     }
 

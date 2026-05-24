@@ -26,6 +26,7 @@ public class HomePageSteps {
 
     @When("Uzytkownik wchodzi na strone tmobile")
     public void tmobileJestOtwarty() {
+        System.out.println("hello world");
         driver.get("https://www.t-mobile.pl/");
         new CustomWait(driver).waitForAjax();
         new CookieManager(driver).handleCookies(Cookies.AKCEPTUJE_WSZYSTKIE);
