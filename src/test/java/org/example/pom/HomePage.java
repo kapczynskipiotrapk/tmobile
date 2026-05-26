@@ -7,9 +7,7 @@ import org.openqa.selenium.WebElement;
 
 public class HomePage extends BasePage {
 
-    final By mainNavXpath = By.xpath("//div[contains (@class, 'ODSGlobalHeaderMainNav')]");
-    final By logoXpath = By.xpath("//a[contains (@class, 'ODSLogo--type-primary')]");
-    final By storeDropdown = By.xpath("//div[@class='ODSGlobalHeaderMegaMenu-Container']");
+    final By logoXpath = By.xpath("//a[contains (@title, 'T-Mobile Logo')]");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -19,12 +17,6 @@ public class HomePage extends BasePage {
         WebElement logo = customWait.waitForElementToBeLocated(logoXpath);
         boolean logoHasCorrectTitle = logo.getAttribute("title").equals("T-Mobile Logo");
         boolean isLogoDisplayed = logo.isDisplayed();
-        boolean mainNavIsDisplayed = driver.findElement(mainNavXpath).isDisplayed();
-        System.out.println();
-        return logoHasCorrectTitle && isLogoDisplayed && mainNavIsDisplayed;
-    }
-
-    public boolean storeDropdownListIsDisplayed(){
-        return customWait.waitForElementToBeLocated(storeDropdown).isDisplayed();
+        return logoHasCorrectTitle && isLogoDisplayed;
     }
 }

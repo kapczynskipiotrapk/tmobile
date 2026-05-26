@@ -8,9 +8,11 @@ import org.openqa.selenium.WebDriver;
 public class Navigation extends BasePage {
 
     UiHelpers uiHelpers;
-    private final String navigationXpath = "//a[contains(@class, 'ODSGlobalHeaderMainLink') and contains(text(), '%s')]";
-    private final By logoXpath = By.xpath("//div[contains (@class, 'logo-panel')]");
-    private final By cartXpath = By.xpath("//button[@aria-label='Koszyk']");
+
+    private final String navigationXpath = "//button[text()= '%s']";
+    private final By logoXpath = By.xpath("//a[contains (@title, 'T-Mobile Logo')]");
+    private final By cartXpath = By.xpath("//a[@aria-label='Koszyk']");
+    private final By submenuXpath = By.xpath("//div[@aria-label='Podmenu' and @aria-hidden='false']");
 
     public Navigation(WebDriver driver) {
         super(driver);
@@ -28,11 +30,11 @@ public class Navigation extends BasePage {
         clicks.waitAndClick(listElementXpath);
     }
 
-    public void navigateToHomePageByClickOnLogo() {
-        clicks.waitAndClick(logoXpath);
-    }
-
     public void navigateToCart() {
         clicks.waitAndClick(cartXpath);
+    }
+
+    public boolean storeDropdownListIsDisplayed() {
+        return customWait.waitForElementToBeLocated(submenuXpath).isDisplayed();
     }
 }
