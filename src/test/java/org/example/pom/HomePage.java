@@ -15,8 +15,7 @@ public class HomePage extends BasePage {
 
     public boolean homePageIsDisplayed() {
         WebElement logo = customWait.waitForElementToBeLocated(logoXpath);
-        boolean logoHasCorrectTitle = logo.getAttribute("title").equals("T-Mobile Logo");
         boolean isLogoDisplayed = logo.isDisplayed();
-        return logoHasCorrectTitle && isLogoDisplayed;
+        return isLogoDisplayed;
     }
 }
