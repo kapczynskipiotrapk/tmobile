@@ -31,7 +31,7 @@ public class NavigationSteps {
 
     @Then("Widoczna jest rozwijana lista produktow")
     public void widocznaJestRozwijanaListaProduktow() {
-        homePage.storeDropdownListIsDisplayed();
+        navigation.storeDropdownListIsDisplayed();
     }
 
     @When("Kliknij {string} z sekcji {string}")
@@ -42,11 +42,6 @@ public class NavigationSteps {
     @Then("Widoczna jest lista smartfonow")
     public void widocznaJestListaSmartfonow() {
         productsCatalogPage.productListIsDisplayed(By.xpath("//div[contains (@data-qa, 'LST_ProductCard')][position()<=6]"));
-    }
-
-    @When("Przejdz na strone glowna TMobile")
-    public void przejdzNaStroneGlowna() {
-        navigation.navigateToHomePageByClickOnLogo();
     }
 
     @When("Kliknij Koszyk")

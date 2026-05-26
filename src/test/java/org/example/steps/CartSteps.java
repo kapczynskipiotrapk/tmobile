@@ -2,10 +2,11 @@ package org.example.steps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.example.config.WebDriverProvider;
 import org.example.pom.CartPage;
 import org.example.testdata.ProductPageTestData;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,22 +25,30 @@ public class CartSteps {
     }
 
     @Then("Widoczna strona Twoj koszyk")
-    public void widocznaStronaTwojKoszyk() {
+    public void yourCartPageIsDisplyed() {
         boolean isCartPageDisplayed = cartPage.isCartPageDisplayed();
-        Assert.assertTrue("cart is not displayed", isCartPageDisplayed);
+        Assertions.assertTrue(isCartPageDisplayed, "cart is not displayed");
+
     }
 
     @And("Cena urzadzenia {string} w koszyku zgadzaja sie z cena ze strony produktu")
-    public void cenaUrzadzeniaZgadzajaSieZCenaZeStronyProduktu(String productName) {
+    public void devicePriceInCartIsSameAsInCatalog(String productName) {
         String cartPrice = cartPage.getProductPrice(productName);
         String productPagePrice = ProductPageTestData.getProductByName(productName).getPrice();
         System.out.println("[INFO] Product " + productName + " price on product details page: " + productPagePrice + " | product price in cart: " + cartPrice);
-        Assert.assertEquals(cartPrice, productPagePrice);
+        Assertions.assertEquals(cartPrice, productPagePrice);
     }
 
     @Then("Koszyk zawiera")
-    public void koszykZawiera(List<String> expectedProductsInCart) {
+    public void cartContains(List<String> expectedProductsInCart) {
         List<String> productsInCart= driver.findElements(By.xpath("//div[contains (@class, 'productName')]/h3")).stream().map(WebElement::getText).toList();
-        Assert.assertEquals("mismatch between actual products in cart and expected products", expectedProductsInCart, productsInCart);
+        Assertions.assertEquals(expectedProductsInCart, productsInCart, "mismatch between actual products in cart and expected products");
     }
+
+    @When("Przejdz na strone glowna TMobile")
+    public void goToMainPage() {
+        cartPage.navigateToHomePageByClickOnLogo();
+    }
+
+
 }

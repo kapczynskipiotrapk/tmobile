@@ -9,7 +9,7 @@ public class CartPage extends BasePage {
 
     final By cartContentXpath = By.xpath("//main[@class='basketContent']");
     final By summaryXpath = By.id("basketSummary");
-
+    final By logoXpath = By.xpath("//div[contains (@class, 'logo-panel')]");
     public CartPage(WebDriver driver) {
         super(driver);
     }
@@ -23,5 +23,9 @@ public class CartPage extends BasePage {
     public String getProductPrice(String productName) {
         By priceLocator = RelativeLocator.with(By.xpath("//div[contains (@class, 'amount')]")).toRightOf(By.xpath(String.format("//div[text()='%s']", productName)));
         return customWait.waitForElementToBeLocated(priceLocator).getText();
+    }
+
+    public void navigateToHomePageByClickOnLogo() {
+        clicks.waitAndClick(logoXpath);
     }
 }
